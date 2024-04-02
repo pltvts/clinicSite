@@ -1,0 +1,46 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Записаться на прием
+{% endblock %}
+
+{% block content %}
+    <h1>Запись на прием</h1>
+    <form method="post">
+        {% csrf_token %}
+    <img class="mb-4" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.downloadclipart.net%2Flarge%2F11072-red-heart-design.png&f=1&nofb=1&ipt=b15c8dfc0e28db942eeca755f4fcd143d448046d9ff1066dc7fe57db6c67f460&ipo=images" alt="сердце" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal">Оставьте нам свои контактые данные</h1>
+
+    <div class="form-floating">
+        <input type="text" name="full_name" class="form-control" id="floatingFullName" placeholder="Ivanov Ivan Ivanovich" required>
+        <label for="floatingFullName">ФИО</label>
+    </div>
+    <div class="form-floating">
+        <input type="text" name="phone_number" class="form-control" id="floatingPhoneNumber" placeholder="+79998876654" required>
+        <label for="floatingPhoneNumber">Номер телефона</label>
+    </div>
+    <div class="form-floating">
+        <select name="doc_name" class="form-select" id="floatingDoc" required>
+            <option value="" disabled selected>Выберите врача</option>
+            {% for doctor in doctors %}
+                <option value="{{ doctor.full_name }}">{{ doctor.full_name }} - {{ doctor.specialty }}</option>
+            {% endfor %}
+        </select>
+        <label for="floatingDoc">ФИО врача</label>
+    </div>
+    <div class="form-floating">
+    <select name="appointment_time" class="form-select" required>
+        <option value="" disabled selected>Выберите время приема</option>
+        {% for time in appointment_times %}
+            <option value="{{ time }}">{{ time }}</option>
+        {% endfor %}
+    </select>
+    <label for="floatingDoc">Время приема</label>
+</div>
+
+        <div>
+            <p> </p>
+        </div>
+    <button class="btn btn-primary w-100 py-2" type="submit">Записать</button>
+  </form>
+{% endblock %}

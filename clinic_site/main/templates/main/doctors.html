@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>Наши Специалисты</h1>
+    <img src="https://i.pinimg.com/originals/d4/1d/4e/d41d4e238b4a822d1fd3cf1e362e699e.jpg" alt="Клиника" class="img-fluid rounded">
+    {% if врачи %}
+        {% for d in врачи %}
+        <div class="alert alert-warning mt-4">
+                <h3>{{ d.full_name }}</h3>
+                <h4>{{ d.specialty }}</h4>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>Никто не работает</p>
+    {% endif %}
+{% endblock %}

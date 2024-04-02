@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>Новости</h1>
+    <img src="https://impeccabuild.com.au/wp-content/uploads/2020/07/Medical-Clinic-Interior-Design-Ideas-Medical-Fitouts-ImpeccaBuild-4-scaled.jpg" alt="Клиника" class="img-fluid rounded">
+    {% if news %}
+        {% for n in news %}
+        <div class="alert alert-warning mt-2">
+                <h3>{{ n.title }}</h3>
+                <h6>{{ n.date }}</h6>
+                <p>{{ n.news }}</p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>Новостей нет :(</p>>
+    {% endif %}
+{% endblock %}
